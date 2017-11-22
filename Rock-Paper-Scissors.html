@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock-Paper-Scissors Game</title>
+    
+	<!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+
+</head>
+<body>
+<h1 class="wow fadeInLeft" data-wow-delay="0.8s">Play Here Rock-Paper-Scissors Game and Have a Fun!!! </h1>
+<div class="scores">
+<p><div id="scores" class="wow fadeInLeft" data-wow-delay="0.8s"><span id="yourScore">player score: 0</span><span id="computerScore">Computer's score: 0</span></div></p>
+</div>
+<p class="wow fadeInUp" data-wow-delay="0.5s">Choose rock, paper, or scissors, and see if you can beat the computer!</p>
+<div class="button">
+
+<button onclick="rockPaperScissors('Rock')" id="button1" class="wow flipInY" data-wow-delay="0.4s"><i class="fa fa-hand-rock-o" aria-hidden="true"></i></button>
+<button onclick="rockPaperScissors('Paper')" id="button2"   class="wow flipInY" data-wow-delay="0.6s"><i class="fa fa-hand-paper-o" aria-hidden="true"></i></button>
+<button onclick="rockPaperScissors('Scissors')" id="button3"   class="wow flipInY" data-wow-delay="0.8s"><i class="fa fa-hand-scissors-o" aria-hidden="true"></i></button>
+
+</div>
+<p id="choices"></p>
+<p id="winLoseOrTie"></p>
+<script>
+    var yourScore = 0;
+    var computerScore = 0;
+    function rockPaperScissors(choice) {
+        computerChoice = ["Rock", "Paper", "Scissors"][Math.floor(Math.random() * 3)];
+        document.getElementById("choices").innerHTML = "You chose " + choice + ", and the computer chose " + computerChoice + "."
+        if (choice == computerChoice) {
+            document.getElementById("winLoseOrTie").innerHTML = "It was a tie!";
+        } else if (["RockScissors", "PaperRock", "ScissorsPaper"].indexOf(choice + computerChoice) != -1) {
+            yourScore++;
+            document.getElementById("winLoseOrTie").innerHTML = "You won!";
+            document.getElementById("yourScore").innerHTML = "Your score: " + yourScore.toString();
+        } else {
+            computerScore++;
+            document.getElementById("winLoseOrTie").innerHTML = "The computer won!";
+            document.getElementById("computerScore").innerHTML = "Computer's score: " + computerScore.toString();
+        }
+    }
+</script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+	<script src="js/wow.min.js"></script>
+              <script>
+              new WOW().init();
+              </script>
+	
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
